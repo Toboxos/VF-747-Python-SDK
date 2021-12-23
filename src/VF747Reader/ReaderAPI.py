@@ -133,6 +133,10 @@ class ReaderAPI:
 
     def setOutputPower(self, power, address=0):
         packet = self.sendCommand( 0x04, bytearray([power]), address )
+        if packet.failed():
+            raise PacketError( packet )
+
+        return True
 
     def setFrequency(self, fmin, fmax, address=0):
         packet = self.sendCommand( 0x05, bytearray([fmin, fmax]) )
