@@ -1,5 +1,5 @@
 import serial
-from packet import *
+from .packet import *
 
 def bytes2HexString( data ):
     s = ""
